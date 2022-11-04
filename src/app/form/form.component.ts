@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -8,15 +8,38 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class FormComponent implements OnInit {
 
-  miFormulario: FormGroup = this.fb.group({
-    nombre:['', [Validators.required, Validators.email]],
-    contraseña:['Administrador1', [Validators.required]],
-    repcontraseña:['Administrador1'],
-  })
+miFormulario: FormGroup = this.fb.group({
 
-  constructor(private fb:FormBuilder) { }
+  correo:['', [Validators.email,Validators.required, Validators.minLength(2)]],
+  nombre:['', [Validators.required, Validators.minLength(2)]],
+  apellido:['', [Validators.required, Validators.minLength(2)]],
 
-  ngOnInit(): void {
+})
+
+constructor( private fb: FormBuilder ) {}
+
+
+  ngOnInit() {
+    this.miFormulario.reset({
+      correo:'',
+      nombre:'',
+      apellido:'',
+    })
   }
+
+  Valido( campo: string ){  
+    return this.miFormulario.controls[campo].errors 
+      && this.miFormulario.controls[campo].touched;
+}
+
+guardar(){
+
+  if(this.miFormulario.invalid) {
+    this.miFormulario.markAllAsTouched();
+    return;
+  }
+
+  console.log(this.miFormulario.value)
+}
 
 }

@@ -1,50 +1,50 @@
 <h1>Formulario Angular+Laravel</h1>
 <hr>
 
-<form autocomplete="off" [formGroup]="miFormulario">
+<form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
     <div class="row mb-3">
         <label for="correo" class="col-sm-2 col-form-label">
-            Introduce tu correo Electronico </label>
+            Correo Electronico </label>
                 <div class="col-sm-10">
-                    <input type="email" formControlName="correo" class="form-control" placeholder="Correo" id="inputEmail3">
-                    <span class="form-text text-danger">Tu correo debe ser valido</span>
+                    <input type="email" formControlName="correo" class="form-control" >
+                    <span class="form-text text-danger" *ngIf="Valido('correo')">Tu correo debe ser valido</span>
                 </div>
     </div>
     <div class="row mb-3">
-        <label for="contraseña" class="col-sm-2 col-form-label">
-            Contraseña
+        <label for="nombre" class="col-sm-2 col-form-label">
+            Nombre
         </label>
         <div class="col-sm-10">
-            <input type="password" class="form-control" formControlName="contraseña" placeholder="Contraseña" id="inputPassword3">
-            <span class="form-text text-danger">Debe contener al menos 5 caracteres</span>
+            <input type="text" class="form-control" formControlName="nombre" >
+            <span class="form-text text-danger" *ngIf="Valido('nombre')">Debe contener al menos 3 caracteres</span>
         </div>
     </div>
     <div class="row mb-3">
-        <label for="contraseña" class="col-sm-2 col-form-label">
-            Repite Contraseña
+        <label for="apellido" class="col-sm-2 col-form-label">
+            Apellidos
         </label>
         <div class="col-sm-10">
-            <input type="password" class="form-control" formControlName="repcontraseña" placeholder="Repite contraseña" id="inputPassword3">
-            <span class="form-text text-danger">Las contraseñas deben coincidir</span>
+            <input type="text" class="form-control" formControlName="apellido" >
+            <span class="form-text text-danger" *ngIf="Valido('apellido')">Debe tener al menos 3 caracteres</span>
         </div>
     </div>
     <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-2 pt-0">Como nos conociste</legend>
         <div class="col-sm-10">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <input class="form-check-input" type="radio" name="gridRadios" value="option1">
                 <label class="form-check-label" for="gridRadios1">
                     Facebook
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <input class="form-check-input" type="radio" name="gridRadios" value="option2">
                 <label class="form-check-label" for="gridRadios2">
                     Instagram
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+                <input class="form-check-input" type="radio" name="gridRadios" value="option3">
                 <label class="form-check-label" for="gridRadios3">
                     Otros
                 </label>
@@ -52,5 +52,6 @@
         </div>
     </fieldset>
     
-    <button type="submit" class="btn btn-primary">Darme de alta</button>
+    <button type="submit" class="btn btn-primary" (click)="guardar()">Darme de alta</button>
 </form>
+
