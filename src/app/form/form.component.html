@@ -28,30 +28,6 @@
             <span class="form-text text-danger" *ngIf="Valido('apellido')">Debe tener al menos 3 caracteres</span>
         </div>
     </div>
-    <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-2 pt-0">Como nos conociste</legend>
-        <div class="col-sm-10">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" value="option1">
-                <label class="form-check-label" for="gridRadios1">
-                    Facebook
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" value="option2">
-                <label class="form-check-label" for="gridRadios2">
-                    Instagram
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" value="option3">
-                <label class="form-check-label" for="gridRadios3">
-                    Otros
-                </label>
-            </div>
-        </div>
-    </fieldset>
-    
     <button type="submit" class="btn btn-primary" (click)="guardar()">Darme de alta</button>
 </form>
 
